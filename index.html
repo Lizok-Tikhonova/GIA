@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./1.js" defer></script>
+</head>
+<body>
+    <button class="exit hide">Выйти</button>
+    <div class="profil hide"></div>
+
+    <div class="client hide">
+        <h2>Подать заявку</h2>
+        <input type="text" class="nameDetail" placeholder="название оборудования">
+        <select name="defectType" class="defectType">
+            <!-- <option value="1" selected>Не включается</option>
+            <option value="2">Шумит</option>
+            <option value="3">Работает нестабильно</option>
+            <option value="4">Тех. обслуживание</option> -->
+        </select>
+        <input type="text" class="desc" placeholder="описание">
+        <button class="sendReq">Отправить заявку</button>
+
+        <div class="userlistReq">
+            <h3>Отправленные заявки</h3>
+            <ul class="uluserlistReq">
+
+            </ul>
+        </div>
+    
+    </div>
+
+    <div class="master hide">
+        <div class="masterActiveReq">
+            <h2 class="titleMaster">Ваши активные заявки</h2>
+            <ul class="masterList"></ul>
+        </div>
+    </div>
+
+    <div class="admin hide">
+
+        <h3 class="statisticCount" style="color:green"></h3>
+
+        <h3>Статистика по типам неисправности</h3>
+        <ul class="listDefect    " type="none" style="padding-left: 5px;"></ul>
+
+
+        <h2>Активные заявки</h2>
+        <ul class="activeReq"></ul>
+
+        <h2>Подтвержденные заявки</h2>
+        <ul class="completeReq"></ul>
+
+
+    </div>
+
+    <form class="auth">
+        <h2 class="authTitle">Авторизация</h2>
+        <input type="text" class="login">
+        <input type="password" class="pass">
+        <button class="btnAuth" type="reset">войти</button>
+        <button class="btngoReg" type="reset">перейти на регистрацию</button>
+    </form>
+
+    <form class="reg hide">
+        <h2 class="authTitle">Регистрация</h2>
+        <input type="text" class="loginr" placeholder="login">
+        <input type="password" class="passr" placeholder="pass">
+        <input type="text" class="fio" placeholder="fio">
+        <input type="phone" class="phone" placeholder="phone">
+        <input type="text" class="pasport" placeholder="pasport">
+        <input type="email" class="mail" placeholder="mail">
+        <input type="text" class="address" placeholder="address">
+        <input type="date" class="birthday" placeholder="birthday">
+        <button class="btnReg" type="reset">зарегистрироваться</button>
+        <button class="btngoAuth" type="reset">перейти на авторизацию</button>
+    </form>
+
+    <dialog id="modal"></dialog>
+    
+</body>
+</html>

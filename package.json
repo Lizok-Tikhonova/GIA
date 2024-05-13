@@ -1,0 +1,16 @@
+{
+  "name": "gia",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "electron": "^30.0.3",
+    "pg": "^8.11.5"
+  }
+}
