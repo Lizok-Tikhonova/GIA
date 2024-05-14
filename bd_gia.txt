@@ -1,0 +1,66 @@
+CREATE TYPE req_statuses AS ENUM ('0','1');
+CREATE TYPE work_statuses AS ENUM ('0','1','2');
+
+create table roles(
+	id_role serial PRIMARY KEY,
+	name_role varchar(30) not null unique
+);
+create table defects_types(
+	id_defecte serial PRIMARY KEY,
+	name_defecte varchar(30) not null
+);
+
+create table users (
+	id_user serial PRIMARY KEY,
+	login varchar(30) not null unique,
+	password varchar(30) not null,
+	fio varchar(50) not null,
+	phone varchar(12) not null unique,
+	pasport varchar(10) not null unique,
+	mail varchar(30) not null unique,
+	address varchar(50) not null,
+	birthday date not null,
+	last_entry timestamp not null,
+	id_role integer,
+	foreign key (id_role) references roles(id_role)
+);
+
+create table requests(
+	id_request serial PRIMARY KEY,
+	name_equipment varchar(100),
+	defect_type integer,
+ 	description varchar(500),
+	date_create date DEFAULT now(),
+	id_client integer,
+	status req_statuses NOT NULL,
+ 	work_status work_statuses NOT NULL,
+	employer integer,
+	finished_date date,
+	foreign key (defect_type) references defects_types(id_defecte),
+	foreign key (id_client) references users(id_user),
+	foreign key (employer) references users(id_user)
+);
+
+insert into roles (name_role) values('Admin');
+insert into roles (name_role) values('Master');
+insert into roles (name_role) values('User');
+
+insert into defects_types (name_defecte) VALUES ('Не включается'); 
+insert into defects_types (name_defecte) VALUES ('Шумит');
+insert into defects_types (name_defecte) VALUES ('Работает нестабильно');
+insert into defects_types (name_defecte) VALUES ('Тех. обслуживание');
+
+insert into users (login,password,fio,phone,pasport, mail, address, birthday, last_entry, id_role) 
+values('admin','123','Roma Dvoynishev','000000000001','0000000001','rom@mail.ru','г. Москва','2004-02-13','2023-12-21 15:00:00',1),
+('Liza','123','Liza Tikhonova','000000000002','0000000002','liz@mail.ru','г. Москва','2004-05-08','2023-12-21 15:00:00',2),
+('Masha','123','Masha Shalygina','000000000003','0000000003','mash@mail.ru','г. Москва','2004-04-22','2023-12-21 15:00:00',2),
+('Gan','123','Gans Linger','000000000004','0000000004','gan@mail.ru','г. Москва','2000-01-01','2023-12-21 15:00:00',2);
+
+-- users
+insert into users (login,password,fio,phone,pasport, mail, address, birthday, last_entry, id_role) 
+values('ben','111','Иванов Бенедикт Всеволодович','000000000005','0000000005','ben@mail.ru','г. Москва','2000-12-21','2023-12-21 15:00:00',3),
+('don','111','Смирнов Дональд Кириллович','000000000006','0000000006','don@mail.ru','г. Москва','2000-12-21','2023-12-21 15:00:00',3),
+('anna','111','Петрова Анна Сергеевна','000000000007','0000000007','ann@mail.ru','г. Москва','2000-12-21','2023-12-21 15:00:00',3);
+
+insert into Requests(name_equipment, defect_type, description, id_client, status, work_status, employer) VALUES 
+('Пылесос', 1, 'пылесос не включается', 6, '0', '0', 4)
